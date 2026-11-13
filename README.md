@@ -15,6 +15,14 @@ configs:
     path: extract/private/holdout.csv
 ---
 
+<!-- dataset-factory:links -->
+**Dataset Factory · v-68e59a5ac91ad404**
+
+[Dataset website](https://earino.github.io/factory-fda-510k-five-year-recall/versions/v-68e59a5ac91ad404/) · [GitHub release](https://github.com/earino/factory-fda-510k-five-year-recall/releases/tag/v-68e59a5ac91ad404) · [Hugging Face](https://huggingface.co/datasets/earino/factory-fda-510k-five-year-recall/tree/v-68e59a5ac91ad404) · [Catalogue](https://earino.github.io/dataset-factory-site/)
+
+Artifact: 4402989d50d250e5d9eab6a8f93c00997c3be07ffecedd577a04ceddd1c15d15
+<!-- /dataset-factory:links -->
+
 # Five-year post-market recall of U.S. medical devices cleared through the 510(k) premarket notification pathway
 
 Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?

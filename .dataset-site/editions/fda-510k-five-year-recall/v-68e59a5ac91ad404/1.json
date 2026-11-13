@@ -1,0 +1,311 @@
+{
+  "artifact_version": "4402989d50d250e5d9eab6a8f93c00997c3be07ffecedd577a04ceddd1c15d15",
+  "assets": {
+    "LICENSE-EVIDENCE.json": {
+      "bytes": 697,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/LICENSE-EVIDENCE.json",
+      "hf_path": "LICENSE-EVIDENCE.json",
+      "sha256": "863cdacc293823d37d8480b06ea3a1dc0df4b081ad98acfbda7c50ebb7dd6008"
+    },
+    "LICENSE.md": {
+      "bytes": 1172,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/LICENSE.md",
+      "hf_path": "LICENSE.md",
+      "sha256": "c451ca1e6eb9b0775760b04b23cfb825f3492c5aabc65ae0f30371c50a33e4f4"
+    },
+    "README.md": {
+      "bytes": 4973,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/README.md",
+      "hf_path": "README.md",
+      "sha256": "241266950dca7d7c833a12998c41a821f0c80cfd2572a8fcdc7ed8ceeb93d755"
+    },
+    "SOURCES.json": {
+      "bytes": 1187,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/SOURCES.json",
+      "hf_path": "SOURCES.json",
+      "sha256": "10cfe9b3d784fdc678c823fd3c1ff2a7f66d0838b850029c757b89e24db1e540"
+    },
+    "evaluation.json": {
+      "bytes": 2290,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/evaluation.json",
+      "hf_path": "evaluation.json",
+      "sha256": "54c5ee04d19b8136f2091bb7e6bda575a28ed8053301997e5ac69a4989945be6"
+    },
+    "extract__meta.json": {
+      "bytes": 1748,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/extract__meta.json",
+      "hf_path": "extract/meta.json",
+      "sha256": "f1eb741be4fbcb543452b835cd6e33d1cdb0be59d635cd3d67e0e7f2514f0853"
+    },
+    "extract__private__holdout.csv": {
+      "bytes": 517988,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/extract__private__holdout.csv",
+      "hf_path": "extract/private/holdout.csv",
+      "sha256": "b3e91aad60e68bddd48e7452d8d06cbb994766c799e6b988e606a5f11707407d"
+    },
+    "extract__public__eval.csv": {
+      "bytes": 519604,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/extract__public__eval.csv",
+      "hf_path": "extract/public/eval.csv",
+      "sha256": "825221abdca3a5cddf6df1694107bc8951d1ec9bbed97f346ea75a2d9f7cfa09"
+    },
+    "extract__public__train.csv": {
+      "bytes": 1742647,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/extract__public__train.csv",
+      "hf_path": "extract/public/train.csv",
+      "sha256": "3e449ebcacdbaf2919571aa443056b7ee78fd5805221bf68902a5edff6a1f25f"
+    },
+    "extract__quality.json": {
+      "bytes": 17027,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/extract__quality.json",
+      "hf_path": "extract/quality.json",
+      "sha256": "435574c5e5e2757ff4dc699ccbeff9be89dcd73b71271072151933054aee1795"
+    },
+    "get_dataset.py": {
+      "bytes": 3680,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/get_dataset.py",
+      "hf_path": "get_dataset.py",
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48"
+    },
+    "qualification.json": {
+      "bytes": 16632,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/qualification.json",
+      "hf_path": "qualification.json",
+      "sha256": "bde81d0a427f5cfcff7aadd311051801b8400e723d87f58fd744757728c95a77"
+    },
+    "reproduction__LICENSE-CC0-1.0.txt": {
+      "bytes": 7048,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__LICENSE-CC0-1.0.txt",
+      "hf_path": "reproduction/LICENSE-CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    "reproduction__LICENSE-MIT.txt": {
+      "bytes": 1124,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__LICENSE-MIT.txt",
+      "hf_path": "reproduction/LICENSE-MIT.txt",
+      "sha256": "56b932ff064e5da113ae10175c8546325f64f26e1ece71683ffcbf8b2304fe1c"
+    },
+    "reproduction__artifact_scrub.py": {
+      "bytes": 11369,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__artifact_scrub.py",
+      "hf_path": "reproduction/artifact_scrub.py",
+      "sha256": "8c663253e691a7b8751f9c853b40a3752a833360caafb1ea8e8f534e64af4b68"
+    },
+    "reproduction__build.py": {
+      "bytes": 28337,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__build.py",
+      "hf_path": "reproduction/build.py",
+      "sha256": "5b7198c03b84241760d2bacd707197a2d2b5b97e8285989bf52ecd5a5723f562"
+    },
+    "reproduction__construction.json": {
+      "bytes": 20951,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__construction.json",
+      "hf_path": "reproduction/construction.json",
+      "sha256": "c7ef917f65e5a389807ccd64fc6d4ceece359d0e0b0eae8cbcfb83c92575eafe"
+    },
+    "reproduction__dataset_package.py": {
+      "bytes": 7927,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__dataset_package.py",
+      "hf_path": "reproduction/dataset_package.py",
+      "sha256": "c2364defe58dcc99322be59a1bb04894ce00e823ce37afeb37bc31012f744327"
+    },
+    "reproduction__dataset_run.py": {
+      "bytes": 12381,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__dataset_run.py",
+      "hf_path": "reproduction/dataset_run.py",
+      "sha256": "8085fae14d6e93b852e692e18c1ef72113a3601f48f78901b6d1ae6db278de57"
+    },
+    "reproduction__get_dataset.py": {
+      "bytes": 3680,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__get_dataset.py",
+      "hf_path": "reproduction/get_dataset.py",
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48"
+    },
+    "reproduction__leakage_battery.py": {
+      "bytes": 17379,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__leakage_battery.py",
+      "hf_path": "reproduction/leakage_battery.py",
+      "sha256": "adbf7ee0aca0012b78cc1f1e4aeb968a23717cae30f66a02e080215e75f830e3"
+    },
+    "reproduction__provenance.json": {
+      "bytes": 573,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__provenance.json",
+      "hf_path": "reproduction/provenance.json",
+      "sha256": "8880de985efd8e79e50bfe94346960358c3143b60c1ed423139fa2e3911da7bc"
+    },
+    "reproduction__qualify_dataset.py": {
+      "bytes": 66067,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__qualify_dataset.py",
+      "hf_path": "reproduction/qualify_dataset.py",
+      "sha256": "bff6d43d0904182e2612c32bab702e41addbf389904a236c209e78be39e37a6b"
+    },
+    "reproduction__recovery_recipes.py": {
+      "bytes": 17609,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__recovery_recipes.py",
+      "hf_path": "reproduction/recovery_recipes.py",
+      "sha256": "f64c542fcda232169c95ace17421b45275194b934938c0ea4c9b68e6f844ad0e"
+    },
+    "reproduction__requirements.txt": {
+      "bytes": 160,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__requirements.txt",
+      "hf_path": "reproduction/requirements.txt",
+      "sha256": "5c72f3268174d20364624f76680e189c408a05dba2e7b8cfe12d077b3865e7f0"
+    },
+    "reproduction__source.json": {
+      "bytes": 16989,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__source.json",
+      "hf_path": "reproduction/source.json",
+      "sha256": "5a6312f07712549bbf40169c6c84dcdac03e98f38441c267469026ca9dee63a0"
+    },
+    "reproduction__source_io.py": {
+      "bytes": 5607,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__source_io.py",
+      "hf_path": "reproduction/source_io.py",
+      "sha256": "0c60eed4968cd342148efbaac7e4fa98f00708d8e6c14c0929928687b9af1ea3"
+    },
+    "reproduction__train.py": {
+      "bytes": 2500,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__train.py",
+      "hf_path": "reproduction/train.py",
+      "sha256": "a3c6bcf13735bc85c52129ded68f839090dffdc266ebc3810dc61b2e6ea5e7e8"
+    },
+    "reproduction__validate.py": {
+      "bytes": 1277,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__validate.py",
+      "hf_path": "reproduction/validate.py",
+      "sha256": "b597e7f84fed614e64b4a86fbecbd6ec0145916a24d0d221a796586976418e7b"
+    },
+    "reproduction__validate.sh": {
+      "bytes": 482,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/reproduction__validate.sh",
+      "hf_path": "reproduction/validate.sh",
+      "sha256": "3f06ca48f11c2e05d331b4d8394284925de660c1d4b086d2f8243959e83b7e6d"
+    },
+    "source-checks.json": {
+      "bytes": 9331,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/source-checks.json",
+      "hf_path": "source-checks.json",
+      "sha256": "0104544e6bd5839225510077877ccb6ef6c9adea1a722916b624a2bcd32ac51c"
+    },
+    "source-snapshot.tar.gz": {
+      "bytes": 528983417,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/source-snapshot.tar.gz",
+      "hf_path": "source-snapshot.tar.gz",
+      "sha256": "e9cf3993d15e54ddfbdbae0ab51b8870ec822493489ac6e59304fd1362d0bce0"
+    },
+    "verify_dataset.py": {
+      "bytes": 1276,
+      "download": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/download/v-68e59a5ac91ad404/verify_dataset.py",
+      "hf_path": "verify_dataset.py",
+      "sha256": "f4a4bb7f565cdbd075c520621f881876b491eaed91a5e6e70afb31e4753f9834"
+    }
+  },
+  "baseline": {
+    "metrics": {
+      "Validation calendar_identity auc": 0.6060407436072217,
+      "Validation calendar_identity brier": 0.09564997028543741,
+      "Validation full_model auc": 0.6798441538385072,
+      "Validation full_model brier": 0.0794854534527989,
+      "Validation majority_prior auc": 0.5,
+      "Validation majority_prior brier": 0.08262498077057921
+    },
+    "scope": "Existing unmodified runner baseline on public validation only; no holdout scoring"
+  },
+  "configs": [],
+  "dataset": "fda-510k-five-year-recall",
+  "documents": [
+    [
+      "README.md",
+      "Loading and reproduction"
+    ],
+    [
+      "evaluation.json",
+      "Measured baseline"
+    ],
+    [
+      "LICENSE.md",
+      "Licence and attribution"
+    ]
+  ],
+  "domain": "U.S. Food and Drug Administration (openFDA, Center for Devices and Radiological Health)",
+  "evaluation_use": "retrospective_research",
+  "github_repository": "earino/factory-fda-510k-five-year-recall",
+  "hf_repository": "earino/factory-fda-510k-five-year-recall",
+  "licenses": {
+    "attribution": "None required under CC0 1.0. Recommended credit: 'Source: U.S. Food and Drug Administration, openFDA device/510k and device/recall endpoints (public domain, CC0 1.0)', with the archive date.",
+    "citation": "",
+    "code": "MIT",
+    "compilation_scope": "Our additional compilation rights only; upstream terms remain in force.",
+    "data_compilation": "CC0-1.0",
+    "source_data": "Public domain: CC0 1.0 Universal dedication by FDA, on the independent statutory basis of 17 U.S.C. 105 (no copyright in U.S. Government works)"
+  },
+  "limitations": [
+    "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall records (about 35%) carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+    "One recall event frequently names several 510(k) numbers and one firm recurs across many rows, so positives are correlated within recall events and within firms; effective sample size for positives is smaller than the row count suggests.",
+    "event_date_initiated is the firm's action date, not FDA's classification date, so recalls initiated near the end of a five-year window but classified later can be miscounted at the boundary.",
+    "device_class comes from openFDA's harmonised join against FDA's current classification database, so it can differ from the class in force at clearance (current-vintage limitation, stated rather than hidden).",
+    "Applicant strings are free text, so the same firm appears under spelling variants and applicant_prior_clearances undercounts large filers.",
+    "The 510(k) record does not say whether the device was ever marketed; an unknown share of 'no recall' rows are devices that never reached patients, which is a definitional limitation of the label, not a data error.",
+    "The bulk files are a moving current vintage (FDA notes later updates can change old records), so the exact row set is reproducible only by archiving the two zips and their checksums.",
+    "510(k) records carry a named contact person and street address; those columns are dropped before release, and no individual-level field is published in the derived CSVs. Only the 510k and recall endpoints are used, so the GMDN-restricted content noted on the licence page is out of scope.",
+    "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall product records carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+    "event_date_initiated is the firm's action date, not FDA's classification date, so a recall initiated near the end of a window but classified later can sit at the boundary.",
+    "device_class comes from openFDA's harmonised join against the current classification database, so it can differ from the class in force at clearance.",
+    "The 510(k) record does not say whether the device was ever marketed; an unknown share of no-recall rows are devices that never reached patients.",
+    "When training labels became available is not documented by the publisher, so the label timing is recorded as unverified rather than as a forecasting claim.",
+    "No uncertainty interval; observed differences do not establish universal headroom"
+  ],
+  "post": {
+    "paragraphs": [
+      "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+      "Population: 510(k) clearance records that carry both a k_number and a decision_date, whose decision_date falls in 2004-01-01 to 2019-12-31, and whose decision_code is SESE (substantially equivalent). No restriction by device type, firm, size or geography. Records with a missing or unparsable decision_date are excluded, and any record whose 1826-day window is not fully covered by the recall snapshot is dropped rather than labelled 0.",
+      "Target: y = 1 if any openFDA device/recall product record lists the row's k_number in its k_numbers array and has event_date_initiated on or after the row's decision_date and on or before decision_date + 1826 days; y = 0 if that five-year window closes on or before the recall snapshot date (2026-11-12) and no such record exists. Rows whose window is not fully observed are dropped, not labelled 0.",
+      "Prediction time: The clearance decision date recorded on the 510(k) record (decision_date). Only fields on that record plus counts of strictly earlier clearance dates are used.",
+      "Splits: Fixed chronological boundaries on decision_date, no random sampling and no re-splitting: train 2004-01-01 to 2013-12-31, eval 2014-01-01 to 2016-12-31, holdout 2017-01-01 to 2019-12-31. All three windows end at least five years before the recall snapshot (last_updated 2026-11-12), so every row's horizon is observed. No embargo is required because each row is a single clearance event, no feature uses a recall outcome, and applicant_prior_clearances uses only strictly earlier decision dates. Splits, label rule and horizon are frozen before any performance measurement.",
+      "Outcome horizon: 60 months (5 years) from the clearance decision date.",
+      "Inputs: product_code: FDA three-character product code on the clearance record (for example MQB or DZE), the finest standard device-type bucket available at clearance.; advisory_committee: Two-letter review panel code and its description (for example RA Radiology, DE Dental, CV Cardiovascular).; device_class: Risk class 1, 2 or 3 attached to the record by openFDA's harmonised join against FDA's current classification database.; clearance_type: Review track: Traditional, Special, or Abbreviated 510(k).; decision_code: FDA decision code on the clearance record, for example SESE for substantially equivalent.; review_days: Calendar days from date_received to decision_date.; third_party_flag: Y or N flag for review by an FDA-accredited third-party reviewer.; applicant_prior_clearances: Count of 510(k) records with the same applicant string and a decision_date strictly earlier than this row's decision_date, a decision-time proxy for the firm's regulatory experience.; applicant_country_code: Two-letter country of the applicant's filed address, distinguishing domestic from foreign submitters."
+    ],
+    "title": "Fda 510K Five Year Recall"
+  },
+  "publication_commits": {
+    "github": "3ec236215b1b93bfc02104fafee010903f72bcab",
+    "huggingface": "b2391e026a360683be204108888fe42ad2fde7ff"
+  },
+  "qualification": {
+    "gate_version": "1.6.1",
+    "result": "PASSED"
+  },
+  "record_sha256": "0c54b32fe6b0060a47c0651d53f38574aa5ae83634e524419e1224e58f0049fe",
+  "release_date": "2026-11-13",
+  "release_schema": "factory-1",
+  "release_tag": "v-68e59a5ac91ad404",
+  "schema_version": 1,
+  "site_revision": 1,
+  "source": {
+    "name": "U.S. Food and Drug Administration (openFDA, Center for Devices and Radiological Health)",
+    "url": "https://open.fda.gov/apis/device/510k/searchable-fields/"
+  },
+  "splits": {
+    "eval": {
+      "rows": 9046
+    },
+    "holdout": {
+      "rows": 9014
+    },
+    "train": {
+      "rows": 30563
+    }
+  },
+  "summary": "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+  "task_type": "binary-classification",
+  "title": "Fda 510K Five Year Recall",
+  "urls": {
+    "catalog": "https://earino.github.io/dataset-factory-site/",
+    "github": "https://github.com/earino/factory-fda-510k-five-year-recall",
+    "github_release": "https://github.com/earino/factory-fda-510k-five-year-recall/releases/tag/v-68e59a5ac91ad404",
+    "huggingface": "https://huggingface.co/datasets/earino/factory-fda-510k-five-year-recall",
+    "huggingface_version": "https://huggingface.co/datasets/earino/factory-fda-510k-five-year-recall/tree/v-68e59a5ac91ad404",
+    "version": "https://earino.github.io/factory-fda-510k-five-year-recall/versions/v-68e59a5ac91ad404/",
+    "website": "https://earino.github.io/factory-fda-510k-five-year-recall/"
+  }
+}
