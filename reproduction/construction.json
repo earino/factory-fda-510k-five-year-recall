@@ -1,0 +1,248 @@
+{
+  "construction_notes": "Repair of the reported failure. The gate reported battery.completed and contract.cross_row_probe_0 through cross_row_probe_2 failing with TypeError: string indices must be integers, not str. Those three entries were free-text probe descriptions supplied in evaluation_contract.cross_row_audit.probes; the gate reads probe records as structured mappings, so plain strings aborted the battery before any row inspection. The probe list is now empty, which is the value the schema example shows, and the audit content is carried in cross_row_audit.rationale and auxiliary_files_review. This is not a silent removal of a real check: the four properties those sentences named are now computed inside build_py from the constructed rows and fail the build when violated. They are (1) k_number uniqueness across the release, (2) applicant_prior_clearances recomputed for sampled candidates from records with a strictly earlier decision date and no recall input, (3) no recall-side label source appears among the shipped input columns, and (4) the shipped target recomputed from the recall join on up to 200 sampled released rows. Nothing else about the download, population, label rule, feature list, horizon or split boundaries changed; all previously passing source checks are preserved unchanged.\n\nSource interpretation. The build follows the openFDA device/510k plus device/recall research and the frozen task rules, with the same question, target, feature list, horizon and chronological splits. Downloads go through source_io.fetch with the two publisher URLs only. Both archives are single-member zipped JSON; each member is streamed in 1 MB text chunks and records are decoded with json.JSONDecoder.raw_decode so the multi-gigabyte expansion is never loaded whole. Parsing checks. Required 510(k) fields are asserted with a bounded diagnostic that names the archive member, the missing names and the observed top-level keys; the same is done for the recall join fields. device_class is read from the nested openfda object and falls back to the top-level device_class key if the nested object is absent; if neither exists the build fails rather than shipping an empty column. Counts are compared to publisher evidence with a ten percent tolerance because the bulk files are a moving current vintage; k_number format, decision_date parse coverage, recall event-date parse coverage and the 1826-day horizon (a kind=unit check against five calendar years) are computed from the constructed rows. Missing semantics. No persistence reference applies: each clearance is a single event observed once, so references.persistence_column is null. No label-derived group rate is shipped, so no eval or holdout rate can expose a scored label. decision_code is constant SESE inside the frozen population; it is shipped as declared rather than silently dropped, and this is the only zero-variance column. device_class is a current-vintage harmonised join and is marked assumed in feature_evidence even though its presence is verified. Whether the bulk 510(k) records carry country_code for every vintage is not proven by a single live record; the build asserts its presence and fails loudly with observed headers if it is absent. No numeric decision threshold exists in this task, so external_threshold is omitted rather than invented. Timing. These are administrative event records with no reporting period or publication lag: period and lag are null, timing.observations is left empty rather than filled with an invented period_end date, training_label_timing is unverified, and the recall archive meta last_updated date is read at build time and used only to prove that every shipped five-year window is closed. Unshipped post-outcome fields are the recall-side label sources k_numbers, event_date_initiated and product_res_number; they appear in label_source_columns and never in the release.",
+  "quality": {
+    "carry_columns": [],
+    "evaluation_contract": {
+      "access": "isolated_rows",
+      "cross_row_audit": {
+        "auxiliary_files_review": "Only public/train.csv, public/eval.csv and private/holdout.csv are written. No recall event date, product_res_number, per-k_number label aggregate or applicant name is shipped as a column.",
+        "probes": [],
+        "rationale": "The release carries no label-derived group rate, so the eval and holdout windows cannot leak a scored label through a category base rate. The only cross-row quantity is a count of strictly earlier clearance dates, which is label-free and is verified inside the build against a direct recount from the source records. Concrete row-level probe specifications are deliberately not declared here: the gate builds its own battery after inspecting the released rows, as the task contract requires, and this construction previously supplied free-text probe descriptions where the gate expects structured probe records, which aborted the battery. The properties those descriptions named are instead checked by the build itself: k_number uniqueness, applicant_prior_clearances recomputed from strictly earlier decision dates with no recall input, no recall-side label source present among the shipped inputs, and the target recomputed from the recall join on sampled released rows."
+      },
+      "feature_evidence": {
+        "advisory_committee": {
+          "availability": "Assigned during review and present on the record at decision time.",
+          "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        },
+        "applicant_country_code": {
+          "availability": "Filed with the applicant address and present at decision time; missing values stay missing.",
+          "source": "openFDA device/510k bulk endpoint, country field observed at https://api.fda.gov/device/510k.json?limit=1 and asserted present at build time",
+          "status": "verified"
+        },
+        "applicant_prior_clearances": {
+          "availability": "Uses only earlier clearances that already existed at the decision instant; no recall record and no label participates.",
+          "source": "Computed inside the build from the same 510(k) bulk file, restricted to records with a decision_date strictly earlier than the row's date",
+          "status": "verified"
+        },
+        "clearance_type": {
+          "availability": "Review track recorded on the submission and present at decision time.",
+          "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        },
+        "decision_code": {
+          "availability": "Decision outcome code on the record; constant SESE inside the frozen population.",
+          "source": "openFDA device/510k bulk endpoint, https://api.fda.gov/device/510k.json?limit=1",
+          "status": "verified"
+        },
+        "decision_date": {
+          "availability": "Present on the clearance record and defines the prediction instant and the split boundary.",
+          "source": "openFDA device/510k bulk endpoint, decision date field documented at https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        },
+        "device_class": {
+          "availability": "Current-vintage value attached at download time; presence is asserted at build time but the class in force at clearance is not proven.",
+          "source": "openFDA harmonised classification join exposed on the 510(k) record, observed at https://api.fda.gov/device/510k.json?limit=1",
+          "status": "assumed"
+        },
+        "k_number": {
+          "availability": "Present on the clearance record at decision time and used only as the stable row identifier.",
+          "source": "openFDA device/510k bulk endpoint, field documented at https://open.fda.gov/apis/device/510k/searchable-fields/ and asserted present at build time",
+          "status": "verified"
+        },
+        "product_code": {
+          "availability": "Filed with the submission and present on the record at decision time.",
+          "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        },
+        "review_days": {
+          "availability": "Both endpoint dates are known at the decision instant, so the interval carries no future information.",
+          "source": "Derived from date_received and decision_date on the same record, both documented at https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        },
+        "third_party_flag": {
+          "availability": "Recorded on the submission and present at decision time.",
+          "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "status": "verified"
+        }
+      },
+      "limitations": [
+        "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall product records carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+        "One recall event frequently names several 510(k) numbers and one firm recurs across many rows, so positives are correlated within recall events and within firms; effective sample size for positives is smaller than the row count suggests.",
+        "event_date_initiated is the firm's action date, not FDA's classification date, so a recall initiated near the end of a window but classified later can sit at the boundary.",
+        "device_class comes from openFDA's harmonised join against the current classification database, so it can differ from the class in force at clearance.",
+        "Applicant strings are free text, so the same firm appears under spelling variants and applicant_prior_clearances undercounts large filers.",
+        "The 510(k) record does not say whether the device was ever marketed; an unknown share of no-recall rows are devices that never reached patients.",
+        "When training labels became available is not documented by the publisher, so the label timing is recorded as unverified rather than as a forecasting claim."
+      ],
+      "selection": {
+        "evidence": "The population is every 510(k) record with a non-null k_number and decision_date inside the frozen windows whose decision_code is SESE. No recall record is consulted when selecting rows, and a row whose five-year window is not yet observed is dropped rather than labelled 0.",
+        "kind": "prediction_time"
+      },
+      "training_label_timing": "unverified",
+      "use": "retrospective_research",
+      "vintage": {
+        "evidence": "Both openFDA bulk files are a moving current vintage, and FDA notes that later updates can change old records. The recall archive meta last_updated date is read at build time and every row's 1826-day window must close on or before it, otherwise the row is dropped.",
+        "kind": "current_snapshot"
+      }
+    },
+    "event_key_column": "decision_date",
+    "expected_duplicate_ids": 0,
+    "features": [
+      "product_code",
+      "advisory_committee",
+      "device_class",
+      "clearance_type",
+      "decision_code",
+      "review_days",
+      "third_party_flag",
+      "applicant_prior_clearances",
+      "applicant_country_code"
+    ],
+    "features_documented_at": "prediction_time",
+    "high_cardinality_columns": [
+      "product_code",
+      "decision_date"
+    ],
+    "id_columns": [
+      "k_number"
+    ],
+    "label_source_columns": [
+      "k_numbers",
+      "event_date_initiated",
+      "product_res_number"
+    ],
+    "measurements": [
+      {
+        "column": "review_days",
+        "frame": "calendar days between date_received and decision_date recorded on the same 510(k) record",
+        "unit": "days"
+      },
+      {
+        "column": "applicant_prior_clearances",
+        "frame": "count of 510(k) records with the identical applicant string and a strictly earlier decision_date, computed before any split",
+        "unit": "clearances"
+      }
+    ],
+    "name": "fda-510k-five-year-recall",
+    "positive_label": 1,
+    "post_hoc_columns": [],
+    "split_windows": {
+      "eval": {
+        "end": "2017-01-01T00:00:00.000",
+        "start": "2014-01-01T00:00:00.000"
+      },
+      "holdout": {
+        "end": "2020-01-01T00:00:00.000",
+        "start": "2017-01-01T00:00:00.000"
+      },
+      "train": {
+        "end": "2014-01-01T00:00:00.000",
+        "start": "2004-01-01T00:00:00.000"
+      }
+    },
+    "splits": {
+      "eval": "public/eval.csv",
+      "holdout": "private/holdout.csv",
+      "train": "public/train.csv"
+    },
+    "target": "recall_5y",
+    "task": {
+      "features": [
+        {
+          "availability": "On the 510(k) record at decision time; documented field, observed on a live record as product_code MQB. Missing values stay missing.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "FDA three-character product code on the clearance record (for example MQB or DZE), the finest standard device-type bucket available at clearance.",
+          "name": "product_code"
+        },
+        {
+          "availability": "On the 510(k) record at decision time; observed on a live record as advisory_committee RA with description Radiology.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "Two-letter review panel code and its description (for example RA Radiology, DE Dental, CV Cardiovascular).",
+          "name": "advisory_committee"
+        },
+        {
+          "availability": "Attached at download time from the current classification database, so it may not equal the class in force in the clearance year. This is a current-vintage caveat, not a post-outcome field. Records without the join are left missing rather than filled.",
+          "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+          "meaning": "Risk class 1, 2 or 3 attached to the record by openFDA's harmonised join against FDA's current classification database.",
+          "name": "device_class"
+        },
+        {
+          "availability": "On the 510(k) record at decision time; observed on a live record as clearance_type Special.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "Review track: Traditional, Special, or Abbreviated 510(k).",
+          "name": "clearance_type"
+        },
+        {
+          "availability": "On the 510(k) record at decision time. The frozen population keeps only SESE, so this column is constant within the release and is shipped as declared rather than dropped.",
+          "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+          "meaning": "FDA decision code on the clearance record, for example SESE for substantially equivalent.",
+          "name": "decision_code"
+        },
+        {
+          "availability": "Both dates are on the record and the interval is known at the decision instant; observed pair date_received 2017-09-26 and decision_date 2017-10-24. Left missing when date_received is absent or later than the decision date.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "Calendar days from date_received to decision_date.",
+          "name": "review_days"
+        },
+        {
+          "availability": "On the 510(k) record at decision time; observed on a live record as third_party_flag N.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "Y or N flag for review by an FDA-accredited third-party reviewer.",
+          "name": "third_party_flag"
+        },
+        {
+          "availability": "Computed only from earlier clearance dates in the same bulk file, never from any recall record and never from any other row's label. Left missing when the applicant string is absent.",
+          "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+          "meaning": "Count of 510(k) records with the same applicant string and a decision_date strictly earlier than this row's decision_date, a decision-time proxy for the firm's regulatory experience.",
+          "name": "applicant_prior_clearances"
+        },
+        {
+          "availability": "On the 510(k) record at decision time; observed on a live record as country_code US. Street address, city, postal code and the named contact are dropped as personal data.",
+          "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+          "meaning": "Two-letter country of the applicant's filed address, distinguishing domestic from foreign submitters.",
+          "name": "applicant_country_code"
+        }
+      ],
+      "population": "510(k) clearance records that carry both a k_number and a decision_date, whose decision_date falls in 2004-01-01 to 2019-12-31, and whose decision_code is SESE (substantially equivalent). No restriction by device type, firm, size or geography. Records with a missing or unparsable decision_date are excluded, and any record whose 1826-day window is not fully covered by the recall snapshot is dropped rather than labelled 0.",
+      "prediction_time": "The clearance decision date recorded on the 510(k) record (decision_date). Only fields on that record plus counts of strictly earlier clearance dates are used.",
+      "question": "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+      "simple_references": "All-negative majority baseline (no recall within five years). Calendar: clearance year and month. Identity: product_code base rate, the strongest single categorical, and its combination with advisory_committee. Firm: modal product code for the same applicant. No persistence baseline applies because each device is observed once rather than repeatedly.",
+      "usefulness": "The outcome is absent from the inputs: no field on the clearance record states whether the device will be recalled, so the label has to be assembled by joining two separate FDA endpoints through the 510(k) number. The signal is a risk gradient over device type, review track, review duration and firm experience rather than a copied status flag, which supports triage of scarce post-market surveillance capacity."
+    },
+    "time_column": "decision_date",
+    "timing": {
+      "features": {
+        "period": null,
+        "published_days_after_period_end": null,
+        "source_kind": "administrative_record"
+      },
+      "observations": [],
+      "prediction_instant": {
+        "citation": "510(k) decision_date on the clearance record; the publisher releases the record after the decision, so the build reads a value that was not necessarily visible on the decision day",
+        "days_after_period_end": null,
+        "kind": "event",
+        "period": null
+      },
+      "row_selection": {
+        "fields": [
+          "k_number",
+          "decision_date",
+          "decision_code"
+        ],
+        "latest_period_used": null,
+        "rule": "Keep 510(k) records with a non-null k_number and decision_date in the frozen half-open windows whose decision_code is SESE; drop rows whose 1826-day window extends past the recall snapshot instead of labelling them negative. No recall information conditions the selection."
+      }
+    }
+  },
+  "references": {
+    "entity_columns": [
+      "product_code",
+      "advisory_committee",
+      "clearance_type"
+    ],
+    "persistence_column": null,
+    "persistence_direction": 1
+  },
+  "source_access_recipe": "Two plain HTTPS downloads, no account or key, both resolved in one pass because signed or dated product URLs expire: https://download.open.fda.gov/device/510k/device-510k-0001-of-0001.json.zip and https://download.open.fda.gov/device/recall/device-recall-0001-of-0001.json.zip. fetch(url, cache, name) keeps the local file plus its URL and SHA256. Each archive holds one UTF-8 JSON member containing a meta envelope and a results array; locate the results array by finding the quoted results key whose value is an array (the meta block also carries a results key, but its value is an object), then decode one record at a time with json.JSONDecoder.raw_decode over a 1 MB chunk buffer. Read last_updated from the recall meta head for the snapshot date. Build the clearance table from k_number, decision_date, date_received, decision_code, clearance_type, advisory_committee, product_code, third_party_flag, applicant, country_code and openfda.device_class; index the recall table by exploded k_numbers with event_date_initiated; label a clearance positive when any recall event date for that k_number falls between decision_date and decision_date plus 1826 days."
+}

@@ -1,0 +1,363 @@
+{
+  "schema": "factory-1",
+  "dataset": "fda-510k-five-year-recall",
+  "version": "v-68e59a5ac91ad404",
+  "artifact_version": "4402989d50d250e5d9eab6a8f93c00997c3be07ffecedd577a04ceddd1c15d15",
+  "assets": {
+    "LICENSE-EVIDENCE.json": {
+      "sha256": "863cdacc293823d37d8480b06ea3a1dc0df4b081ad98acfbda7c50ebb7dd6008",
+      "bytes": 697,
+      "asset_name": "LICENSE-EVIDENCE.json"
+    },
+    "LICENSE.md": {
+      "sha256": "c451ca1e6eb9b0775760b04b23cfb825f3492c5aabc65ae0f30371c50a33e4f4",
+      "bytes": 1172,
+      "asset_name": "LICENSE.md"
+    },
+    "README.md": {
+      "sha256": "241266950dca7d7c833a12998c41a821f0c80cfd2572a8fcdc7ed8ceeb93d755",
+      "bytes": 4973,
+      "asset_name": "README.md"
+    },
+    "SOURCES.json": {
+      "sha256": "10cfe9b3d784fdc678c823fd3c1ff2a7f66d0838b850029c757b89e24db1e540",
+      "bytes": 1187,
+      "asset_name": "SOURCES.json"
+    },
+    "evaluation.json": {
+      "sha256": "54c5ee04d19b8136f2091bb7e6bda575a28ed8053301997e5ac69a4989945be6",
+      "bytes": 2290,
+      "asset_name": "evaluation.json"
+    },
+    "extract/meta.json": {
+      "sha256": "f1eb741be4fbcb543452b835cd6e33d1cdb0be59d635cd3d67e0e7f2514f0853",
+      "bytes": 1748,
+      "asset_name": "extract__meta.json"
+    },
+    "extract/private/holdout.csv": {
+      "sha256": "b3e91aad60e68bddd48e7452d8d06cbb994766c799e6b988e606a5f11707407d",
+      "bytes": 517988,
+      "asset_name": "extract__private__holdout.csv"
+    },
+    "extract/public/eval.csv": {
+      "sha256": "825221abdca3a5cddf6df1694107bc8951d1ec9bbed97f346ea75a2d9f7cfa09",
+      "bytes": 519604,
+      "asset_name": "extract__public__eval.csv"
+    },
+    "extract/public/train.csv": {
+      "sha256": "3e449ebcacdbaf2919571aa443056b7ee78fd5805221bf68902a5edff6a1f25f",
+      "bytes": 1742647,
+      "asset_name": "extract__public__train.csv"
+    },
+    "extract/quality.json": {
+      "sha256": "435574c5e5e2757ff4dc699ccbeff9be89dcd73b71271072151933054aee1795",
+      "bytes": 17027,
+      "asset_name": "extract__quality.json"
+    },
+    "get_dataset.py": {
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48",
+      "bytes": 3680,
+      "asset_name": "get_dataset.py"
+    },
+    "qualification.json": {
+      "sha256": "bde81d0a427f5cfcff7aadd311051801b8400e723d87f58fd744757728c95a77",
+      "bytes": 16632,
+      "asset_name": "qualification.json"
+    },
+    "reproduction/LICENSE-CC0-1.0.txt": {
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048,
+      "asset_name": "reproduction__LICENSE-CC0-1.0.txt"
+    },
+    "reproduction/LICENSE-MIT.txt": {
+      "sha256": "56b932ff064e5da113ae10175c8546325f64f26e1ece71683ffcbf8b2304fe1c",
+      "bytes": 1124,
+      "asset_name": "reproduction__LICENSE-MIT.txt"
+    },
+    "reproduction/artifact_scrub.py": {
+      "sha256": "8c663253e691a7b8751f9c853b40a3752a833360caafb1ea8e8f534e64af4b68",
+      "bytes": 11369,
+      "asset_name": "reproduction__artifact_scrub.py"
+    },
+    "reproduction/build.py": {
+      "sha256": "5b7198c03b84241760d2bacd707197a2d2b5b97e8285989bf52ecd5a5723f562",
+      "bytes": 28337,
+      "asset_name": "reproduction__build.py"
+    },
+    "reproduction/construction.json": {
+      "sha256": "c7ef917f65e5a389807ccd64fc6d4ceece359d0e0b0eae8cbcfb83c92575eafe",
+      "bytes": 20951,
+      "asset_name": "reproduction__construction.json"
+    },
+    "reproduction/dataset_package.py": {
+      "sha256": "c2364defe58dcc99322be59a1bb04894ce00e823ce37afeb37bc31012f744327",
+      "bytes": 7927,
+      "asset_name": "reproduction__dataset_package.py"
+    },
+    "reproduction/dataset_run.py": {
+      "sha256": "8085fae14d6e93b852e692e18c1ef72113a3601f48f78901b6d1ae6db278de57",
+      "bytes": 12381,
+      "asset_name": "reproduction__dataset_run.py"
+    },
+    "reproduction/get_dataset.py": {
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48",
+      "bytes": 3680,
+      "asset_name": "reproduction__get_dataset.py"
+    },
+    "reproduction/leakage_battery.py": {
+      "sha256": "adbf7ee0aca0012b78cc1f1e4aeb968a23717cae30f66a02e080215e75f830e3",
+      "bytes": 17379,
+      "asset_name": "reproduction__leakage_battery.py"
+    },
+    "reproduction/provenance.json": {
+      "sha256": "8880de985efd8e79e50bfe94346960358c3143b60c1ed423139fa2e3911da7bc",
+      "bytes": 573,
+      "asset_name": "reproduction__provenance.json"
+    },
+    "reproduction/qualify_dataset.py": {
+      "sha256": "bff6d43d0904182e2612c32bab702e41addbf389904a236c209e78be39e37a6b",
+      "bytes": 66067,
+      "asset_name": "reproduction__qualify_dataset.py"
+    },
+    "reproduction/recovery_recipes.py": {
+      "sha256": "f64c542fcda232169c95ace17421b45275194b934938c0ea4c9b68e6f844ad0e",
+      "bytes": 17609,
+      "asset_name": "reproduction__recovery_recipes.py"
+    },
+    "reproduction/requirements.txt": {
+      "sha256": "5c72f3268174d20364624f76680e189c408a05dba2e7b8cfe12d077b3865e7f0",
+      "bytes": 160,
+      "asset_name": "reproduction__requirements.txt"
+    },
+    "reproduction/source.json": {
+      "sha256": "5a6312f07712549bbf40169c6c84dcdac03e98f38441c267469026ca9dee63a0",
+      "bytes": 16989,
+      "asset_name": "reproduction__source.json"
+    },
+    "reproduction/source_io.py": {
+      "sha256": "0c60eed4968cd342148efbaac7e4fa98f00708d8e6c14c0929928687b9af1ea3",
+      "bytes": 5607,
+      "asset_name": "reproduction__source_io.py"
+    },
+    "reproduction/train.py": {
+      "sha256": "a3c6bcf13735bc85c52129ded68f839090dffdc266ebc3810dc61b2e6ea5e7e8",
+      "bytes": 2500,
+      "asset_name": "reproduction__train.py"
+    },
+    "reproduction/validate.py": {
+      "sha256": "b597e7f84fed614e64b4a86fbecbd6ec0145916a24d0d221a796586976418e7b",
+      "bytes": 1277,
+      "asset_name": "reproduction__validate.py"
+    },
+    "reproduction/validate.sh": {
+      "sha256": "3f06ca48f11c2e05d331b4d8394284925de660c1d4b086d2f8243959e83b7e6d",
+      "bytes": 482,
+      "asset_name": "reproduction__validate.sh"
+    },
+    "source-checks.json": {
+      "sha256": "0104544e6bd5839225510077877ccb6ef6c9adea1a722916b624a2bcd32ac51c",
+      "bytes": 9331,
+      "asset_name": "source-checks.json"
+    },
+    "source-snapshot.tar.gz": {
+      "sha256": "e9cf3993d15e54ddfbdbae0ab51b8870ec822493489ac6e59304fd1362d0bce0",
+      "bytes": 528983417,
+      "asset_name": "source-snapshot.tar.gz"
+    },
+    "verify_dataset.py": {
+      "sha256": "f4a4bb7f565cdbd075c520621f881876b491eaed91a5e6e70afb31e4753f9834",
+      "bytes": 1276,
+      "asset_name": "verify_dataset.py"
+    }
+  },
+  "source": {
+    "attribution": "None required under CC0 1.0. Recommended credit: 'Source: U.S. Food and Drug Administration, openFDA device/510k and device/recall endpoints (public domain, CC0 1.0)', with the archive date.",
+    "citation": "",
+    "documentation_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+    "license": "Public domain: CC0 1.0 Universal dedication by FDA, on the independent statutory basis of 17 U.S.C. 105 (no copyright in U.S. Government works)",
+    "publisher": "U.S. Food and Drug Administration (openFDA, Center for Devices and Radiological Health)",
+    "redistribution": true,
+    "terms_excerpt": "unless otherwise noted, the content, data, documentation, code, and related materials on openFDA is public domain and made available with a Creative Commons CC0 1.0 Universal dedication",
+    "terms_url": "https://open.fda.gov/license/",
+    "urls": [
+      "https://download.open.fda.gov/device/510k/device-510k-0001-of-0001.json.zip",
+      "https://download.open.fda.gov/device/recall/device-recall-0001-of-0001.json.zip"
+    ]
+  },
+  "task": {
+    "decision_user": "A CDRH post-market surveillance analyst, or a hospital value-analysis / payer technology-assessment team, deciding at the moment of clearance how much post-market monitoring attention and follow-up to allocate to a newly cleared device.",
+    "features": [
+      {
+        "availability": "Filed with the submission and present on the record at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "FDA three-character product code on the clearance record (for example MQB or DZE), the finest standard device-type bucket available at clearance.",
+        "name": "product_code"
+      },
+      {
+        "availability": "Assigned during review and present on the record at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Two-letter review panel code and its description (for example RA Radiology, DE Dental, CV Cardiovascular).",
+        "name": "advisory_committee"
+      },
+      {
+        "availability": "Current-vintage value attached at download time; presence is asserted at build time but the class in force at clearance is not proven.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "Risk class 1, 2 or 3 attached to the record by openFDA's harmonised join against FDA's current classification database.",
+        "name": "device_class"
+      },
+      {
+        "availability": "Review track recorded on the submission and present at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Review track: Traditional, Special, or Abbreviated 510(k).",
+        "name": "clearance_type"
+      },
+      {
+        "availability": "Decision outcome code on the record; constant SESE inside the frozen population.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "FDA decision code on the clearance record, for example SESE for substantially equivalent.",
+        "name": "decision_code"
+      },
+      {
+        "availability": "Both endpoint dates are known at the decision instant, so the interval carries no future information.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Calendar days from date_received to decision_date.",
+        "name": "review_days"
+      },
+      {
+        "availability": "Recorded on the submission and present at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Y or N flag for review by an FDA-accredited third-party reviewer.",
+        "name": "third_party_flag"
+      },
+      {
+        "availability": "Uses only earlier clearances that already existed at the decision instant; no recall record and no label participates.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Count of 510(k) records with the same applicant string and a decision_date strictly earlier than this row's decision_date, a decision-time proxy for the firm's regulatory experience.",
+        "name": "applicant_prior_clearances"
+      },
+      {
+        "availability": "Filed with the applicant address and present at decision time; missing values stay missing.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "Two-letter country of the applicant's filed address, distinguishing domestic from foreign submitters.",
+        "name": "applicant_country_code"
+      }
+    ],
+    "outcome_horizon": "60 months (5 years) from the clearance decision date.",
+    "population": "510(k) clearance records that carry both a k_number and a decision_date, whose decision_date falls in 2004-01-01 to 2019-12-31, and whose decision_code is SESE (substantially equivalent). No restriction by device type, firm, size or geography. Records with a missing or unparsable decision_date are excluded, and any record whose 1826-day window is not fully covered by the recall snapshot is dropped rather than labelled 0.",
+    "prediction_time": "The clearance decision date recorded on the 510(k) record (decision_date). Only fields on that record plus counts of strictly earlier clearance dates are used.",
+    "question": "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+    "simple_references": "All-negative majority baseline (no recall within five years). Calendar: clearance year and month. Identity: product_code base rate, the strongest single categorical, and its combination with advisory_committee. Firm: modal product code for the same applicant. No persistence baseline applies because each device is observed once rather than repeatedly.",
+    "split_policy": "Fixed chronological boundaries on decision_date, no random sampling and no re-splitting: train 2004-01-01 to 2013-12-31, eval 2014-01-01 to 2016-12-31, holdout 2017-01-01 to 2019-12-31. All three windows end at least five years before the recall snapshot (last_updated 2026-11-12), so every row's horizon is observed. No embargo is required because each row is a single clearance event, no feature uses a recall outcome, and applicant_prior_clearances uses only strictly earlier decision dates. Splits, label rule and horizon are frozen before any performance measurement.",
+    "target": "y = 1 if any openFDA device/recall product record lists the row's k_number in its k_numbers array and has event_date_initiated on or after the row's decision_date and on or before decision_date + 1826 days; y = 0 if that five-year window closes on or before the recall snapshot date (2026-11-12) and no such record exists. Rows whose window is not fully observed are dropped, not labelled 0.",
+    "usefulness": "The outcome is absent from the inputs: no field on the clearance record states whether the device will be recalled, so the label has to be assembled by joining two separate FDA endpoints through the 510(k) number. The signal is a risk gradient over device type, review track, review duration and firm experience rather than a copied status flag, which supports triage of scarce post-market surveillance capacity."
+  },
+  "rows": {
+    "train": 30563,
+    "eval": 9046,
+    "holdout": 9014
+  },
+  "evaluation_contract": {
+    "access": "isolated_rows",
+    "cross_row_audit": {
+      "auxiliary_files_review": "Only public/train.csv, public/eval.csv and private/holdout.csv are written. No recall event date, product_res_number, per-k_number label aggregate or applicant name is shipped as a column.",
+      "probes": [],
+      "rationale": "The release carries no label-derived group rate, so the eval and holdout windows cannot leak a scored label through a category base rate. The only cross-row quantity is a count of strictly earlier clearance dates, which is label-free and is verified inside the build against a direct recount from the source records. Concrete row-level probe specifications are deliberately not declared here: the gate builds its own battery after inspecting the released rows, as the task contract requires, and this construction previously supplied free-text probe descriptions where the gate expects structured probe records, which aborted the battery. The properties those descriptions named are instead checked by the build itself: k_number uniqueness, applicant_prior_clearances recomputed from strictly earlier decision dates with no recall input, no recall-side label source present among the shipped inputs, and the target recomputed from the recall join on sampled released rows."
+    },
+    "feature_evidence": {
+      "advisory_committee": {
+        "availability": "Assigned during review and present on the record at decision time.",
+        "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      },
+      "applicant_country_code": {
+        "availability": "Filed with the applicant address and present at decision time; missing values stay missing.",
+        "source": "openFDA device/510k bulk endpoint, country field observed at https://api.fda.gov/device/510k.json?limit=1 and asserted present at build time",
+        "status": "verified"
+      },
+      "applicant_prior_clearances": {
+        "availability": "Uses only earlier clearances that already existed at the decision instant; no recall record and no label participates.",
+        "source": "Computed inside the build from the same 510(k) bulk file, restricted to records with a decision_date strictly earlier than the row's date",
+        "status": "verified"
+      },
+      "clearance_type": {
+        "availability": "Review track recorded on the submission and present at decision time.",
+        "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      },
+      "decision_code": {
+        "availability": "Decision outcome code on the record; constant SESE inside the frozen population.",
+        "source": "openFDA device/510k bulk endpoint, https://api.fda.gov/device/510k.json?limit=1",
+        "status": "verified"
+      },
+      "decision_date": {
+        "availability": "Present on the clearance record and defines the prediction instant and the split boundary.",
+        "source": "openFDA device/510k bulk endpoint, decision date field documented at https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      },
+      "device_class": {
+        "availability": "Current-vintage value attached at download time; presence is asserted at build time but the class in force at clearance is not proven.",
+        "source": "openFDA harmonised classification join exposed on the 510(k) record, observed at https://api.fda.gov/device/510k.json?limit=1",
+        "status": "assumed"
+      },
+      "k_number": {
+        "availability": "Present on the clearance record at decision time and used only as the stable row identifier.",
+        "source": "openFDA device/510k bulk endpoint, field documented at https://open.fda.gov/apis/device/510k/searchable-fields/ and asserted present at build time",
+        "status": "verified"
+      },
+      "product_code": {
+        "availability": "Filed with the submission and present on the record at decision time.",
+        "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      },
+      "review_days": {
+        "availability": "Both endpoint dates are known at the decision instant, so the interval carries no future information.",
+        "source": "Derived from date_received and decision_date on the same record, both documented at https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      },
+      "third_party_flag": {
+        "availability": "Recorded on the submission and present at decision time.",
+        "source": "openFDA device/510k bulk endpoint, https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "status": "verified"
+      }
+    },
+    "limitations": [
+      "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall product records carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+      "One recall event frequently names several 510(k) numbers and one firm recurs across many rows, so positives are correlated within recall events and within firms; effective sample size for positives is smaller than the row count suggests.",
+      "event_date_initiated is the firm's action date, not FDA's classification date, so a recall initiated near the end of a window but classified later can sit at the boundary.",
+      "device_class comes from openFDA's harmonised join against the current classification database, so it can differ from the class in force at clearance.",
+      "Applicant strings are free text, so the same firm appears under spelling variants and applicant_prior_clearances undercounts large filers.",
+      "The 510(k) record does not say whether the device was ever marketed; an unknown share of no-recall rows are devices that never reached patients.",
+      "When training labels became available is not documented by the publisher, so the label timing is recorded as unverified rather than as a forecasting claim."
+    ],
+    "selection": {
+      "evidence": "The population is every 510(k) record with a non-null k_number and decision_date inside the frozen windows whose decision_code is SESE. No recall record is consulted when selecting rows, and a row whose five-year window is not yet observed is dropped rather than labelled 0.",
+      "kind": "prediction_time"
+    },
+    "training_label_timing": "unverified",
+    "use": "retrospective_research",
+    "vintage": {
+      "evidence": "Both openFDA bulk files are a moving current vintage, and FDA notes that later updates can change old records. The recall archive meta last_updated date is read at build time and every row's 1826-day window must close on or before it, otherwise the row is dropped.",
+      "kind": "current_snapshot"
+    }
+  },
+  "limitations": [
+    "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall records (about 35%) carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+    "One recall event frequently names several 510(k) numbers and one firm recurs across many rows, so positives are correlated within recall events and within firms; effective sample size for positives is smaller than the row count suggests.",
+    "event_date_initiated is the firm's action date, not FDA's classification date, so recalls initiated near the end of a five-year window but classified later can be miscounted at the boundary.",
+    "device_class comes from openFDA's harmonised join against FDA's current classification database, so it can differ from the class in force at clearance (current-vintage limitation, stated rather than hidden).",
+    "Applicant strings are free text, so the same firm appears under spelling variants and applicant_prior_clearances undercounts large filers.",
+    "The 510(k) record does not say whether the device was ever marketed; an unknown share of 'no recall' rows are devices that never reached patients, which is a definitional limitation of the label, not a data error.",
+    "The bulk files are a moving current vintage (FDA notes later updates can change old records), so the exact row set is reproducible only by archiving the two zips and their checksums.",
+    "510(k) records carry a named contact person and street address; those columns are dropped before release, and no individual-level field is published in the derived CSVs. Only the 510k and recall endpoints are used, so the GMDN-restricted content noted on the licence page is out of scope.",
+    "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall product records carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+    "event_date_initiated is the firm's action date, not FDA's classification date, so a recall initiated near the end of a window but classified later can sit at the boundary.",
+    "device_class comes from openFDA's harmonised join against the current classification database, so it can differ from the class in force at clearance.",
+    "The 510(k) record does not say whether the device was ever marketed; an unknown share of no-recall rows are devices that never reached patients.",
+    "When training labels became available is not documented by the publisher, so the label timing is recorded as unverified rather than as a forecasting claim.",
+    "No uncertainty interval; observed differences do not establish universal headroom"
+  ],
+  "qualification": {
+    "gate_version": "1.6.1",
+    "ok": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "protocol": "Existing unmodified runner baseline on public validation only; no holdout scoring",
+  "rows": 9046,
+  "metrics": {
+    "full_model": {
+      "auc": 0.6798441538385072,
+      "brier": 0.0794854534527989
+    },
+    "majority_prior": {
+      "auc": 0.5,
+      "brier": 0.08262498077057921
+    },
+    "calendar_identity": {
+      "auc": 0.6060407436072217,
+      "brier": 0.09564997028543741
+    }
+  },
+  "by_year": {
+    "2014": {
+      "rows": 3150,
+      "positive_rate": 0.09682539682539683,
+      "metrics": {
+        "full_model": {
+          "auc": 0.688301017027284,
+          "brier": 0.08371479536816147
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.08754231758212506
+        },
+        "calendar_identity": {
+          "auc": 0.6159491774467717,
+          "brier": 0.09887330262419701
+        }
+      }
+    },
+    "2015": {
+      "rows": 2989,
+      "positive_rate": 0.0899966543994647,
+      "metrics": {
+        "full_model": {
+          "auc": 0.6730674611852177,
+          "brier": 0.07925647740883293
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.08190491287222441
+        },
+        "calendar_identity": {
+          "auc": 0.6211813907719221,
+          "brier": 0.09182511293781483
+        }
+      }
+    },
+    "2016": {
+      "rows": 2907,
+      "positive_rate": 0.08531131750945993,
+      "metrics": {
+        "full_model": {
+          "auc": 0.6755950575646921,
+          "brier": 0.0751380101648808
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.07803697663979597
+        },
+        "calendar_identity": {
+          "auc": 0.5773135061689454,
+          "brier": 0.09608994336591595
+        }
+      }
+    }
+  },
+  "majority_accuracy": 0.9091311076718992,
+  "calendar_identity_unseen_rows": 2068,
+  "persistence": "Not applicable; see construction notes",
+  "limitations": [
+    "No uncertainty interval; observed differences do not establish universal headroom"
+  ],
+  "runner_files": {
+    "train.py": "a3c6bcf13735bc85c52129ded68f839090dffdc266ebc3810dc61b2e6ea5e7e8",
+    "validate.py": "b597e7f84fed614e64b4a86fbecbd6ec0145916a24d0d221a796586976418e7b",
+    "validate.sh": "3f06ca48f11c2e05d331b4d8394284925de660c1d4b086d2f8243959e83b7e6d"
+  }
+}

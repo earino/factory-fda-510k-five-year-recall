@@ -1,0 +1,160 @@
+{
+  "construction": {
+    "access_recipe": "Two plain HTTPS downloads, no account or key, both resolved in one pass because signed or dated product URLs expire: https://download.open.fda.gov/device/510k/device-510k-0001-of-0001.json.zip and https://download.open.fda.gov/device/recall/device-recall-0001-of-0001.json.zip. fetch(url, cache, name) keeps the local file plus its URL and SHA256. Each archive holds one UTF-8 JSON member containing a meta envelope and a results array; locate the results array by finding the quoted results key whose value is an array (the meta block also carries a results key, but its value is an object), then decode one record at a time with json.JSONDecoder.raw_decode over a 1 MB chunk buffer. Read last_updated from the recall meta head for the snapshot date. Build the clearance table from k_number, decision_date, date_received, decision_code, clearance_type, advisory_committee, product_code, third_party_flag, applicant, country_code and openfda.device_class; index the recall table by exploded k_numbers with event_date_initiated; label a clearance positive when any recall event date for that k_number falls between decision_date and decision_date plus 1826 days.",
+    "expected_size": "Observed: 176,625 510(k) records total (last_updated 2026-11-02), 49,270 of them with decision_date in 2004-2019; 59,705 device recall product records total (last_updated 2026-11-12), 38,913 carrying at least one 510(k) number. Downloads total about 515 MB zipped and expand to roughly 2-3 GB; the constructed release is on the order of 40-45 thousand rows with a single-digit-thousands positive count (positivity must be measured, not assumed, at build time).",
+    "format": "Two zipped JSON files (UTF-8, one JSON object per file with a meta envelope and a results array). Flatten to two tables: one row per 510(k) record and one row per recall product record with k_numbers exploded; then emit train/eval/holdout CSVs with one row per clearance, an id column (k_number), the nine inputs and a 0/1 target.",
+    "source_examples": "Field/value checks from live responses: \"k_number\": \"K172951\", \"decision_code\": \"SESE\", \"decision_description\": \"Substantially Equivalent\", \"clearance_type\": \"Special\", \"advisory_committee\": \"RA\", \"advisory_committee_description\": \"Radiology\", \"product_code\": \"MQB\", \"third_party_flag\": \"N\", \"device_name\": \"Nexus DR Digital X-ray Imaging System\", \"date_received\": \"2017-09-26\", \"decision_date\": \"2017-10-24\", openfda.device_class \"2\", openfda.regulation_number \"892.1680\". Recall record: \"product_res_number\": \"Z-0001-04\", \"res_event_number\": \"27549\", \"k_numbers\": [\"K020436\"], \"event_date_initiated\": \"2003-10-27\", \"event_date_posted\": \"2003-10-29\", \"recall_status\": \"Terminated\", \"root_cause_description\": \"Other\"."
+  },
+  "dataset_id": "fda-510k-five-year-recall",
+  "evidence": [
+    {
+      "claim": "FDA dedicates openFDA data to the public domain under CC0 1.0, which permits copying, modification and redistribution without a separate licence grant.",
+      "quote": "unless otherwise noted, the content, data, documentation, code, and related materials on openFDA is public domain and made available with a Creative Commons CC0 1.0 Universal dedication",
+      "url": "https://open.fda.gov/license/"
+    },
+    {
+      "claim": "Independent statutory basis for reuse of the FDA-authored records, not dependent on the publisher's dedication.",
+      "quote": "Copyright protection under this title is not available for any work of the United States Government",
+      "url": "https://www.law.cornell.edu/uscode/text/17/105"
+    },
+    {
+      "claim": "The licence page carves out GMDN content, which is third-party material restricted for AI training; the two endpoints used here do not supply GMDN terms and such fields are excluded from the release.",
+      "quote": "Any data/information suppliers who wish to extract GMDN Content from this site in order to use it as a basis for creating and supporting commercial services such as alternative categorization, alternative GMDN Term assignment, mapping to other categorizations or ontologies, or for AI training purposes, must first obtain an appropriate license from The GMDN Agency.",
+      "url": "https://open.fda.gov/license/"
+    },
+    {
+      "claim": "The 510(k) endpoint is a single zipped JSON download of 238.38 MB, last updated 2026-11-09, with no account or key.",
+      "quote": "This endpoint's data may be downloaded in zipped JSON files.",
+      "url": "https://open.fda.gov/apis/device/510k/download/"
+    },
+    {
+      "claim": "The device recall endpoint is a single zipped JSON download of 276.47 MB, last updated 2026-11-13.",
+      "quote": "There are 1 files, last updated on 2026-11-13.",
+      "url": "https://open.fda.gov/apis/device/recall/download/"
+    },
+    {
+      "claim": "176,625 clearance records exist, and a live record shows the documented input fields k_number, product_code, advisory_committee, clearance_type, decision_code, date_received, decision_date and third_party_flag.",
+      "quote": "\"total\": 176625",
+      "url": "https://api.fda.gov/device/510k.json?limit=1"
+    },
+    {
+      "claim": "49,270 clearance records fall inside the frozen 2004-2019 construction window.",
+      "quote": "\"total\": 49270",
+      "url": "https://api.fda.gov/device/510k.json?search=decision_date:%5B2004-01-01+TO+2019-12-31%5D&limit=1"
+    },
+    {
+      "claim": "59,705 device recall product records exist and each may carry an array of 510(k) numbers plus an initiation date, which is what makes the join possible.",
+      "quote": "\"k_numbers\": [",
+      "url": "https://api.fda.gov/device/recall.json?limit=1"
+    },
+    {
+      "claim": "38,913 of 59,705 device recall records carry at least one 510(k) number, so 20,792 cannot contribute a positive and the label necessarily undercounts.",
+      "quote": "\"total\": 38913",
+      "url": "https://api.fda.gov/device/recall.json?search=_exists_:k_numbers&limit=1"
+    },
+    {
+      "claim": "Device recall coverage runs from 2002 to the current snapshot, so five-year windows closing before November 2026 are fully observed.",
+      "quote": "2002 to 2026-11-12",
+      "url": "https://open.fda.gov/apis/device/recall/"
+    },
+    {
+      "claim": "FDA documents every input field used here, with downloadable PDF/XLSX/YAML field references.",
+      "quote": "Use the fields explorer below to find detailed explanations of every field in the dataset.",
+      "url": "https://open.fda.gov/apis/device/510k/searchable-fields/"
+    }
+  ],
+  "limitations": [
+    "The outcome is linked only through the 510(k) number: 20,792 of 59,705 device recall records (about 35%) carry no k_number and are invisible, so the label is a lower bound on true recall incidence for cleared devices.",
+    "One recall event frequently names several 510(k) numbers and one firm recurs across many rows, so positives are correlated within recall events and within firms; effective sample size for positives is smaller than the row count suggests.",
+    "event_date_initiated is the firm's action date, not FDA's classification date, so recalls initiated near the end of a five-year window but classified later can be miscounted at the boundary.",
+    "device_class comes from openFDA's harmonised join against FDA's current classification database, so it can differ from the class in force at clearance (current-vintage limitation, stated rather than hidden).",
+    "Applicant strings are free text, so the same firm appears under spelling variants and applicant_prior_clearances undercounts large filers.",
+    "The 510(k) record does not say whether the device was ever marketed; an unknown share of 'no recall' rows are devices that never reached patients, which is a definitional limitation of the label, not a data error.",
+    "The bulk files are a moving current vintage (FDA notes later updates can change old records), so the exact row set is reproducible only by archiving the two zips and their checksums.",
+    "510(k) records carry a named contact person and street address; those columns are dropped before release, and no individual-level field is published in the derived CSVs. Only the 510k and recall endpoints are used, so the GMDN-restricted content noted on the licence page is out of scope."
+  ],
+  "reason": "FDA openFDA's device/510k and device/recall endpoints are two directly downloadable zipped JSON files (238.38 MB and 276.47 MB, no account, key or registration) from a single agency, with every field used documented and a live-verified schema. FDA dedicates openFDA content to the public domain under CC0 1.0, and 17 U.S.C. 105 independently bars copyright in U.S. Government works, so redistribution of a derived CSV release is permitted; the only third-party carve-out on the licence page (GMDN terms licensed from the GMDN Agency) does not apply to these two endpoints and those fields are excluded. The label is not a field in either file: it is built by joining recall product records to clearance records on the 510(k) number, which gives 49,270 observed in-window clearances, independent one-row-per-clearance observations, a five-year horizon fully observed before the 2026-11-12 recall cutoff, and fixed chronological boundaries that need no embargo.",
+  "source": {
+    "attribution": "None required under CC0 1.0. Recommended credit: 'Source: U.S. Food and Drug Administration, openFDA device/510k and device/recall endpoints (public domain, CC0 1.0)', with the archive date.",
+    "citation": "",
+    "documentation_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+    "license": "Public domain: CC0 1.0 Universal dedication by FDA, on the independent statutory basis of 17 U.S.C. 105 (no copyright in U.S. Government works)",
+    "publisher": "U.S. Food and Drug Administration (openFDA, Center for Devices and Radiological Health)",
+    "redistribution": true,
+    "terms_excerpt": "unless otherwise noted, the content, data, documentation, code, and related materials on openFDA is public domain and made available with a Creative Commons CC0 1.0 Universal dedication",
+    "terms_url": "https://open.fda.gov/license/",
+    "urls": [
+      "https://download.open.fda.gov/device/510k/device-510k-0001-of-0001.json.zip",
+      "https://download.open.fda.gov/device/recall/device-recall-0001-of-0001.json.zip"
+    ]
+  },
+  "task": {
+    "decision_user": "A CDRH post-market surveillance analyst, or a hospital value-analysis / payer technology-assessment team, deciding at the moment of clearance how much post-market monitoring attention and follow-up to allocate to a newly cleared device.",
+    "features": [
+      {
+        "availability": "Filed with the submission and present on the record at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "FDA three-character product code on the clearance record (for example MQB or DZE), the finest standard device-type bucket available at clearance.",
+        "name": "product_code"
+      },
+      {
+        "availability": "Assigned during review and present on the record at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Two-letter review panel code and its description (for example RA Radiology, DE Dental, CV Cardiovascular).",
+        "name": "advisory_committee"
+      },
+      {
+        "availability": "Current-vintage value attached at download time; presence is asserted at build time but the class in force at clearance is not proven.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "Risk class 1, 2 or 3 attached to the record by openFDA's harmonised join against FDA's current classification database.",
+        "name": "device_class"
+      },
+      {
+        "availability": "Review track recorded on the submission and present at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Review track: Traditional, Special, or Abbreviated 510(k).",
+        "name": "clearance_type"
+      },
+      {
+        "availability": "Decision outcome code on the record; constant SESE inside the frozen population.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "FDA decision code on the clearance record, for example SESE for substantially equivalent.",
+        "name": "decision_code"
+      },
+      {
+        "availability": "Both endpoint dates are known at the decision instant, so the interval carries no future information.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Calendar days from date_received to decision_date.",
+        "name": "review_days"
+      },
+      {
+        "availability": "Recorded on the submission and present at decision time.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Y or N flag for review by an FDA-accredited third-party reviewer.",
+        "name": "third_party_flag"
+      },
+      {
+        "availability": "Uses only earlier clearances that already existed at the decision instant; no recall record and no label participates.",
+        "evidence_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+        "meaning": "Count of 510(k) records with the same applicant string and a decision_date strictly earlier than this row's decision_date, a decision-time proxy for the firm's regulatory experience.",
+        "name": "applicant_prior_clearances"
+      },
+      {
+        "availability": "Filed with the applicant address and present at decision time; missing values stay missing.",
+        "evidence_url": "https://api.fda.gov/device/510k.json?limit=1",
+        "meaning": "Two-letter country of the applicant's filed address, distinguishing domestic from foreign submitters.",
+        "name": "applicant_country_code"
+      }
+    ],
+    "outcome_horizon": "60 months (5 years) from the clearance decision date.",
+    "population": "510(k) clearance records that carry both a k_number and a decision_date, whose decision_date falls in 2004-01-01 to 2019-12-31, and whose decision_code is SESE (substantially equivalent). No restriction by device type, firm, size or geography. Records with a missing or unparsable decision_date are excluded, and any record whose 1826-day window is not fully covered by the recall snapshot is dropped rather than labelled 0.",
+    "prediction_time": "The clearance decision date recorded on the 510(k) record (decision_date). Only fields on that record plus counts of strictly earlier clearance dates are used.",
+    "question": "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+    "simple_references": "All-negative majority baseline (no recall within five years). Calendar: clearance year and month. Identity: product_code base rate, the strongest single categorical, and its combination with advisory_committee. Firm: modal product code for the same applicant. No persistence baseline applies because each device is observed once rather than repeatedly.",
+    "split_policy": "Fixed chronological boundaries on decision_date, no random sampling and no re-splitting: train 2004-01-01 to 2013-12-31, eval 2014-01-01 to 2016-12-31, holdout 2017-01-01 to 2019-12-31. All three windows end at least five years before the recall snapshot (last_updated 2026-11-12), so every row's horizon is observed. No embargo is required because each row is a single clearance event, no feature uses a recall outcome, and applicant_prior_clearances uses only strictly earlier decision dates. Splits, label rule and horizon are frozen before any performance measurement.",
+    "target": "y = 1 if any openFDA device/recall product record lists the row's k_number in its k_numbers array and has event_date_initiated on or after the row's decision_date and on or before decision_date + 1826 days; y = 0 if that five-year window closes on or before the recall snapshot date (2026-11-12) and no such record exists. Rows whose window is not fully observed are dropped, not labelled 0.",
+    "usefulness": "The outcome is absent from the inputs: no field on the clearance record states whether the device will be recalled, so the label has to be assembled by joining two separate FDA endpoints through the 510(k) number. The signal is a risk gradient over device type, review track, review duration and firm experience rather than a copied status flag, which supports triage of scarce post-market surveillance capacity."
+  },
+  "title": "Five-year post-market recall of U.S. medical devices cleared through the 510(k) premarket notification pathway",
+  "verdict": "ready"
+}

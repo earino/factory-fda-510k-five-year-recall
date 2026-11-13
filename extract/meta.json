@@ -1,0 +1,48 @@
+{
+  "name": "fda-510k-five-year-recall",
+  "description": "Will a medical device cleared by FDA through the 510(k) pathway appear in FDA's device recall enforcement reports, for a recall initiated within five years of the clearance decision?",
+  "target": "recall_5y",
+  "positive_label": 1,
+  "id_columns": [
+    "k_number"
+  ],
+  "columns": [
+    "k_number",
+    "decision_date",
+    "product_code",
+    "advisory_committee",
+    "device_class",
+    "clearance_type",
+    "decision_code",
+    "review_days",
+    "third_party_flag",
+    "applicant_prior_clearances",
+    "applicant_country_code",
+    "recall_5y"
+  ],
+  "rows": {
+    "train": 30563,
+    "eval": 9046,
+    "holdout": 9014
+  },
+  "positive_rate": {
+    "train": 0.0872296567745313,
+    "eval": 0.09086889232810082,
+    "holdout": 0.07909917905480364
+  },
+  "split": {
+    "eval": {
+      "end": "2017-01-01T00:00:00.000",
+      "start": "2014-01-01T00:00:00.000"
+    },
+    "holdout": {
+      "end": "2020-01-01T00:00:00.000",
+      "start": "2017-01-01T00:00:00.000"
+    },
+    "train": {
+      "end": "2014-01-01T00:00:00.000",
+      "start": "2004-01-01T00:00:00.000"
+    }
+  },
+  "split_description": "Fixed chronological boundaries on decision_date, no random sampling and no re-splitting: train 2004-01-01 to 2013-12-31, eval 2014-01-01 to 2016-12-31, holdout 2017-01-01 to 2019-12-31. All three windows end at least five years before the recall snapshot (last_updated 2026-11-12), so every row's horizon is observed. No embargo is required because each row is a single clearance event, no feature uses a recall outcome, and applicant_prior_clearances uses only strictly earlier decision dates. Splits, label rule and horizon are frozen before any performance measurement."
+}

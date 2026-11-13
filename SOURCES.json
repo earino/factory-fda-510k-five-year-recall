@@ -1,0 +1,30 @@
+{
+  "publisher-terms.snapshot": {
+    "url": "https://open.fda.gov/license/",
+    "bytes": 123019,
+    "sha256": "7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2",
+    "retrieved_at_unix": 1794612010.024522,
+    "transport_attempts": 1
+  },
+  "publisher-documentation.snapshot": {
+    "url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+    "bytes": 128731,
+    "sha256": "d3f64b08626f22995fc27441d011b50aa4e877011ebed613c6ee285eb8f60ae2",
+    "retrieved_at_unix": 1794612010.3644395,
+    "transport_attempts": 1
+  },
+  "device-510k-0001-of-0001.json.zip": {
+    "url": "https://download.open.fda.gov/device/510k/device-510k-0001-of-0001.json.zip",
+    "bytes": 249963096,
+    "sha256": "eb479de53bcb8b48c73c9a5ecaf6eea75eb84a00431ac0c04000090005c663c9",
+    "retrieved_at_unix": 1794612012.1838198,
+    "transport_attempts": 1
+  },
+  "device-recall-0001-of-0001.json.zip": {
+    "url": "https://download.open.fda.gov/device/recall/device-recall-0001-of-0001.json.zip",
+    "bytes": 289901857,
+    "sha256": "dba5d161ef5b3e56214c1f8dd66ff73c5f97e8975150e7d6b41463e937cd9fff",
+    "retrieved_at_unix": 1794612013.5205514,
+    "transport_attempts": 1
+  }
+}

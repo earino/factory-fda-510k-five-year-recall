@@ -1,0 +1,155 @@
+{
+  "checks": [
+    {
+      "check": "510(k) bulk archive downloaded",
+      "observed": "249963096 bytes, member device-510k-0001-of-0001.json",
+      "expected": "publisher lists a 238.38 MB zipped 510(k) archive; accept any compressed file above 20 MB because the snapshot moves",
+      "passed": true
+    },
+    {
+      "check": "device recall bulk archive downloaded",
+      "observed": "289901857 bytes, member device-recall-0001-of-0001.json",
+      "expected": "publisher lists a 276.47 MB zipped device recall archive; accept any compressed file above 20 MB because the snapshot moves",
+      "passed": true
+    },
+    {
+      "check": "510(k) record carries every declared field",
+      "observed": "missing names []; keys seen in the first 500 records ['address_1', 'address_2', 'advisory_committee', 'advisory_committee_description', 'applicant', 'city', 'clearance_type', 'contact', 'country_code', 'date_received', 'decision_code', 'decision_date', 'decision_description', 'device_name', 'expedited_review_flag', 'k_number', 'openfda', 'postal_code', 'product_code', 'review_advisory_committee', 'state', 'statement_or_summary', 'third_party_flag', 'zip_code']",
+      "expected": "openFDA device/510k searchable fields: k_number, decision_date, date_received, decision_code, clearance_type, advisory_committee, product_code, third_party_flag, applicant, country_code",
+      "passed": true
+    },
+    {
+      "check": "510(k) record count matches publisher evidence",
+      "observed": "176625 clearance records",
+      "expected": "publisher reports 176625 clearance records (10 percent tolerance for a moving snapshot)",
+      "passed": true
+    },
+    {
+      "check": "in-window 510(k) record count matches publisher evidence",
+      "observed": "49270 records with decision_date in the frozen 2004 to 2019 window",
+      "expected": "publisher reports 49270 clearance records with a decision date from 2004-01-01 to 2019-12-31 (10 percent tolerance)",
+      "passed": true
+    },
+    {
+      "check": "decision_date parses for the clearance population",
+      "observed": "0 unparsable and 0 missing decision_date values among 176625 records",
+      "expected": "decision_date is an ISO date on the clearance records; unparsable values stay below one per thousand records",
+      "passed": true
+    },
+    {
+      "check": "substantially equivalent clearances dominate the included population",
+      "observed": "48623 SESE clearances among 49270 in-window records",
+      "expected": "the frozen population keeps decision_code SESE only; the retained count must be large and positive",
+      "passed": true
+    },
+    {
+      "check": "recall record carries the join key and the event date",
+      "observed": "missing names []; keys seen in the first 500 records ['action', 'additional_info_contact', 'address_1', 'address_2', 'cfres_id', 'city', 'code_info', 'country', 'distribution_pattern', 'event_date_created', 'event_date_initiated', 'event_date_posted', 'event_date_terminated', 'firm_fei_number', 'k_numbers', 'openfda', 'pma_numbers', 'postal_code', 'product_code', 'product_description', 'product_quantity', 'product_res_number', 'reason_for_recall', 'recall_status', 'recalling_firm', 'res_event_number', 'root_cause_description', 'state']",
+      "expected": "openFDA device/recall fields k_numbers and event_date_initiated on the recall product records",
+      "passed": true
+    },
+    {
+      "check": "recall records carrying at least one 510(k) number",
+      "observed": "38913 of 59705 recall product records",
+      "expected": "publisher reports 38913 of 59705 recall records carry k_numbers (10 percent tolerance)",
+      "passed": true
+    },
+    {
+      "check": "recall join keys look like 510(k) numbers",
+      "observed": "48638 of 48647 k_numbers start with K and carry 4 to 8 digits",
+      "expected": "a 510(k) number is the letter K followed by digits, as in the published example K020436",
+      "passed": true
+    },
+    {
+      "check": "recall event dates parse",
+      "observed": "0 unparsable and 0 missing event_date_initiated values among 38913 recall records with k_numbers",
+      "expected": "event_date_initiated is an ISO date; unparsable values must be zero and missing values are counted rather than treated as a negative label",
+      "passed": true
+    },
+    {
+      "check": "applicant prior clearances count only strictly earlier decision dates",
+      "observed": "0 mismatches over 5 sampled clearances",
+      "expected": "the count equals the number of records with the same applicant string and an earlier decision_date, recomputed directly from the source records with no recall information",
+      "passed": true
+    },
+    {
+      "check": "split train has rows and positives",
+      "observed": "30563 rows and 2666 positives",
+      "expected": "a non-empty frozen window with at least one positive under the five-year recall rule",
+      "passed": true
+    },
+    {
+      "check": "split eval has rows and positives",
+      "observed": "9046 rows and 822 positives",
+      "expected": "a non-empty frozen window with at least one positive under the five-year recall rule",
+      "passed": true
+    },
+    {
+      "check": "split holdout has rows and positives",
+      "observed": "9014 rows and 713 positives",
+      "expected": "a non-empty frozen window with at least one positive under the five-year recall rule",
+      "passed": true
+    },
+    {
+      "check": "k_number is unique across the release",
+      "observed": "0 duplicate ids among 48623 rows",
+      "expected": "one row per 510(k) clearance; repeats dropped keeping the earliest decision_date",
+      "passed": true
+    },
+    {
+      "check": "shipped columns are exactly the declared identifier, time, features and target",
+      "observed": "['k_number', 'decision_date', 'product_code', 'advisory_committee', 'device_class', 'clearance_type', 'decision_code', 'review_days', 'third_party_flag', 'applicant_prior_clearances', 'applicant_country_code', 'recall_5y']",
+      "expected": "['k_number', 'decision_date', 'product_code', 'advisory_committee', 'device_class', 'clearance_type', 'decision_code', 'review_days', 'third_party_flag', 'applicant_prior_clearances', 'applicant_country_code', 'recall_5y'] on all three splits",
+      "passed": true
+    },
+    {
+      "check": "no recall-side label source is shipped as an input column",
+      "observed": "shipped inputs ['k_number', 'decision_date', 'product_code', 'advisory_committee', 'device_class', 'clearance_type', 'decision_code', 'review_days', 'third_party_flag', 'applicant_prior_clearances', 'applicant_country_code']; overlap with recall label sources []",
+      "expected": "every input comes from the 510(k) clearance record plus a label-free count of earlier clearance dates; the recall fields k_numbers, event_date_initiated and product_res_number stay out of the release",
+      "passed": true
+    },
+    {
+      "check": "shipped target recomputes from the recall join on sampled rows",
+      "observed": "0 mismatches over 201 sampled released rows",
+      "expected": "a row is positive exactly when some recall record for its k_number has an initiation date between the decision date and the decision date plus 1826 days, inclusive; nothing else enters the label",
+      "passed": true
+    },
+    {
+      "check": "every declared feature column is populated",
+      "observed": "empty columns []",
+      "expected": "no declared feature ships as an empty column; missing values stay missing rather than being filled",
+      "passed": true
+    },
+    {
+      "check": "device_class values come from the documented risk classes",
+      "observed": "value counts {'2': 44203, '1': 3057, 'U': 1130, '3': 227}; populated for 48617 of 48623 rows; other codes 1130",
+      "expected": "openFDA classification join publishes classes 1, 2 and 3; other published codes are kept as their own category and counted rather than converted to zero",
+      "passed": true
+    },
+    {
+      "check": "review_days is a non-negative day count",
+      "observed": "min 1, max 3037, populated for 48623 rows",
+      "expected": "decision_date is on or after date_received on the same 510(k) record",
+      "passed": true
+    },
+    {
+      "check": "horizon unit: 1826 days against five calendar years",
+      "observed": "max absolute difference 1 day(s) over 10 sampled decision dates",
+      "expected": "the frozen five-year horizon is expressed as 1826 days; a leap-day boundary may differ by one day",
+      "kind": "unit",
+      "passed": true
+    },
+    {
+      "check": "every labelled row has a fully observed five-year window",
+      "observed": "latest window end 2024-12-30 against recall snapshot 2026-11-13 from archive meta last_updated; dropped unobserved rows 0",
+      "expected": "decision_date plus 1826 days must close on or before the recall snapshot, otherwise the row is dropped rather than labelled 0",
+      "passed": true
+    },
+    {
+      "check": "measured positive rate is plausible for the joined label",
+      "observed": "4201 positives of 48623 rows, rate 0.0864",
+      "expected": "the label is built by joining recall records on the 510(k) number, so the measured rate must be above zero and well below one; no publisher rate exists to copy",
+      "passed": true
+    }
+  ]
+}

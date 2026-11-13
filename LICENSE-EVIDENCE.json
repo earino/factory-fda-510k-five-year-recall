@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "terms_url": "https://open.fda.gov/license/",
+  "terms_sha256": "7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2",
+  "documentation_url": "https://open.fda.gov/apis/device/510k/searchable-fields/",
+  "documentation_sha256": "d3f64b08626f22995fc27441d011b50aa4e877011ebed613c6ee285eb8f60ae2",
+  "quoted_excerpt": "unless otherwise noted, the content, data, documentation, code, and related materials on openFDA is public domain and made available with a Creative Commons CC0 1.0 Universal dedication",
+  "excerpt_found": true,
+  "excerpt_match": "contiguous",
+  "scope": "Captured publisher bytes and quote presence; semantic applicability reviewed separately"
+}
